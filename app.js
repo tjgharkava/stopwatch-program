@@ -13,15 +13,24 @@ function start() {
 }
 
 function stop() {
-
+    if(isRunning) {
+        clearInterval(timer);
+        elapsedTime = Date.now() - startTime;
+        isRunning = false;
+    }
 }
 
 function reset() {
+    clearInterval(timer);
+    let startTime = 0;
+    let elapsedTime = 0;
+    isRunning = false;
+    display.textContent = '00:00:00:000';
 
 }
 
 function update() {
-    
+
     const currentTime = Date.now();
     elapsedTime = currentTime - startTime;
 
